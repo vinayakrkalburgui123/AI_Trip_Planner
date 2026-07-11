@@ -19,7 +19,11 @@ SECRET_KEY = os.getenv(
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "ai-trip-planner-or2r.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 # ==========================
 # INSTALLED APPS
@@ -127,9 +131,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-# ==========================
-# API KEYS
-# ==========================
 
 # ==========================
 # API KEYS
