@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    transition:.35s;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+.navbar{
+    background:#0077ff;
+    color:white;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.navbar h2{
+    font-size:30px;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    text-decoration:underline;
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:35px auto;
+}
+
+/* ---------------- WELCOME ---------------- */
+
+.welcome{
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    margin-bottom:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.welcome-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.welcome h1{
+    font-size:50px;
+    color:#222;
+}
+
+.theme-btn{
+
+    width:auto;
+    padding:12px 18px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+
+}
+
+.theme-btn:hover{
+    background:#333;
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.btn{
+
+    background:#0077ff;
+    color:white;
+    padding:12px 18px;
+    text-decoration:none;
+    border-radius:8px;
+    display:inline-block;
+    margin-top:15px;
+    margin-right:10px;
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#0056cc;
+    transform:translateY(-2px);
+
+}
+
+.delete-btn{
+
+    background:#ff3b30;
+    color:white;
+    padding:12px 18px;
+    text-decoration:none;
+    border-radius:8px;
+    display:inline-block;
+    margin-top:15px;
+    transition:.3s;
+
+}
+
+.delete-btn:hover{
+
+    background:#d90429;
+    transform:translateY(-2px);
+
+}
+
+/* ---------------- CARD ---------------- */
+
+.card{
+
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.card h2{
+    font-size:32px;
+}
+
+/* ---------------- TRIP CARD ---------------- */
+
+.trip-card{
+
+    background:#fafafa;
+    border:1px solid #ddd;
+    padding:25px;
+    margin-top:20px;
+    border-radius:12px;
+    transition:.35s;
+
+}
+
+.trip-card:hover{
+
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.trip-card h3{
+
+    color:#0077ff;
+    font-size:28px;
+    margin-bottom:15px;
+
+}
+
+.trip-card p{
+
+    margin-bottom:10px;
+    font-size:17px;
+
+}
+
+/* ---------------- PLAN ---------------- */
+
+pre{
+
+    background:#f3f4f6;
+    padding:18px;
+    border-radius:10px;
+    white-space:pre-wrap;
+    overflow-x:auto;
+    line-height:1.7;
+    margin-top:12px;
+
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media(max-width:900px){
+
+    .welcome-top{
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+
+    }
+
+    .welcome h1{
+
+        font-size:34px;
+
+    }
+
+}
+
+@media(max-width:650px){
+
+    .navbar{
+
+        flex-direction:column;
+        gap:15px;
+
+    }
+
+    .btn,
+    .delete-btn{
+
+        display:block;
+        width:100%;
+        text-align:center;
+
+    }
+
+}
+
+/* ---------------- DARK MODE ---------------- */
+
+body.dark-mode{
+
+    background:#121212;
+    color:white;
+
+}
+
+body.dark-mode .navbar{
+
+    background:#111827;
+
+}
+
+body.dark-mode .welcome,
+body.dark-mode .card{
+
+    background:#1e1e1e;
+
+}
+
+body.dark-mode .trip-card{
+
+    background:#2b2b2b;
+    border-color:#444;
+
+}
+
+body.dark-mode pre{
+
+    background:#343434;
+    color:white;
+
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode strong{
+
+    color:white;
+
+}
+
+body.dark-mode .btn{
+
+    background:#2563eb;
+
+}
+
+body.dark-mode .btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+body.dark-mode .delete-btn{
+
+    background:#dc2626;
+
+}
+
+body.dark-mode .delete-btn:hover{
+
+    background:#b91c1c;
+
+}
+
+/* ---------------- ANIMATION ---------------- */
+
+body,
+.navbar,
+.welcome,
+.card,
+.trip-card,
+.btn,
+.delete-btn,
+pre{
+
+    transition:all .35s ease;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <h2>✈️ AI Trip Planner</h2>
+
+    <a href="/logout/">
+        Logout
+    </a>
+
+</div>
+
+<!-- ================= CONTAINER ================= -->
+
+<div class="container">
+
+    <!-- Welcome Card -->
+
+    <div class="welcome">
+
+        <div class="welcome-top">
+
+            <div>
+
+                <h1>
+                    Welcome, {{ user.username }} 👋
+                </h1>
+
+                <br>
+
+                <a href="/trips/create/" class="btn">
+                    ➕ Create New Trip
+                </a>
+
+            </div>
+
+            <button
+                type="button"
+                id="themeBtn"
+                class="theme-btn"
+                onclick="toggleTheme()"
+            >
+                🌙 Dark Mode
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Trips -->
+
+    <div class="card">
+
+        <h2>📍 My Trips</h2>
+
+        <br>
+
+        {% if trips %}
+
+            {% for trip in trips %}
+
+            <div class="trip-card">
+
+                <h3>{{ trip.destination }}</h3>
+
+                <p>
+                    <strong>Days:</strong>
+                    {{ trip.days }}
+                </p>
+
+                <p>
+                    <strong>Budget:</strong>
+                    ₹{{ trip.budget }}
+                </p>
+
+                <p>
+                    <strong>Preferences:</strong>
+                    {{ trip.preferences }}
+                </p>
+
+                <p>
+                    <strong>AI Plan:</strong>
+                </p>
+
+                <pre>{{ trip.plan|truncatechars:300 }}</pre>
+
+                <a
+                    href="/trips/view/{{ trip.id }}/"
+                    class="btn"
+                >
+                    👁️ See More
+                </a>
+
+                <a
+                    href="/trips/delete/{{ trip.id }}/"
+                    class="delete-btn"
+                >
+                    🗑 Delete Trip
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p style="font-size:18px;">
+                No trips created yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+<!-- ================= DARK MODE ================= -->
+
+<script>
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark-mode");
+
+    let btn = document.getElementById("themeBtn");
+
+    if(document.body.classList.contains("dark-mode")){
+
+        btn.innerHTML="☀️ Light Mode";
+
+        localStorage.setItem("theme","dark");
+
+    }
+
+    else{
+
+        btn.innerHTML="🌙 Dark Mode";
+
+        localStorage.setItem("theme","light");
+
+    }
+
+}
+
+window.onload=function(){
+
+    if(localStorage.getItem("theme")=="dark"){
+
+        document.body.classList.add("dark-mode");
+
+        document.getElementById("themeBtn").innerHTML="☀️ Light Mode";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

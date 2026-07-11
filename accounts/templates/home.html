@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Trip Planner</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        ✈️ AI Trip Planner
+    </div>
+
+    <div class="nav-links">
+
+    <a href="/">Home</a>
+    <a href="#">Trips</a>
+
+    {% if user.is_authenticated %}
+
+        <a href="#">Welcome, {{ user.username }}</a>
+        <a href="/logout/">Logout</a>
+
+    {% else %}
+
+        <a href="/login/">Login</a>
+        <a href="/register/">Register</a>
+
+    {% endif %}
+
+</div>
+</nav>
+
+<section class="hero">
+
+    <h1>Plan Smart. Travel Better.</h1>
+
+    <p>
+        Create AI-powered travel itineraries in seconds.
+    </p>
+
+    <a href="#" class="btn">
+        Plan My Trip
+    </a>
+
+</section>
+
+<section class="features">
+
+    <div class="card">
+        <h3>🤖 AI Planning</h3>
+        <p>Generate smart travel plans instantly.</p>
+    </div>
+
+    <div class="card">
+        <h3>💰 Budget Estimation</h3>
+        <p>Get estimated trip costs automatically.</p>
+    </div>
+
+    <div class="card">
+        <h3>🌦 Weather Forecast</h3>
+        <p>Check weather before travelling.</p>
+    </div>
+
+</section>
+
+</body>
+</html>
