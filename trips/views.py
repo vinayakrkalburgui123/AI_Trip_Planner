@@ -15,6 +15,7 @@ from reportlab.pdfgen import canvas
 # ----------------------------
 
 genai.configure(api_key=settings.GEMINI_API_KEY)
+print("GEMINI KEY EXISTS:", bool(settings.GEMINI_API_KEY))
 
 try:
     for m in genai.list_models():
