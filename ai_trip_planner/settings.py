@@ -131,20 +131,13 @@ STATICFILES_DIRS = [
 # API KEYS
 # ==========================
 
-GEMINI_API_KEY = os.getenv(
-    "GEMINI_API_KEY",
-    "AQ.Ab8RN6IyDAPoYiLxmgHXuvjnR63BKHOffmkVoMTMcpqBjKOoQw"
-)
+# ==========================
+# API KEYS
+# ==========================
 
-WEATHER_API_KEY = os.getenv(
-    "WEATHER_API_KEY",
-    "4138e6b6bbb0bb764355271502337b3e"
-)
-
-PEXELS_API_KEY = os.getenv(
-    "PEXELS_API_KEY",
-    "SqzZ4OBKq4hTFWbhjZHCrydWKQdNRaQ9Uc8pRpxsR1QYJBuore7Q7OS4"
-)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
+PEXELS_API_KEY = os.getenv("PEXELS_API_KEY")
 
 # ==========================
 # LOGIN SETTINGS
