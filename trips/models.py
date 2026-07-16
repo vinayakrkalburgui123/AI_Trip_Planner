@@ -22,6 +22,15 @@ class Trip(models.Model):
     plan = models.TextField()
 
     # ----------------------------
+    # Destination Image
+    # ----------------------------
+
+    image_url = models.URLField(
+        blank=True,
+        null=True
+    )
+
+    # ----------------------------
     # AI Budget Breakdown
     # ----------------------------
 
@@ -49,5 +58,9 @@ class Trip(models.Model):
         default=0
     )
 
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
     def __str__(self):
-        return self.destination
+        return f"{self.destination} ({self.user.username})"

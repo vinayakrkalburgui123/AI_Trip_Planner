@@ -4,7 +4,12 @@ Django settings for ai_trip_planner project.
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR / "ai_trip_planner" / ".env")
 # Build paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -158,3 +163,9 @@ LOGOUT_REDIRECT_URL = "/login/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+
+print("GEMINI:", bool(GEMINI_API_KEY))
+print("WEATHER:", bool(WEATHER_API_KEY))
+print("PEXELS:", bool(PEXELS_API_KEY))

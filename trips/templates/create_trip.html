@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-
 <head>
 
     <title>Create Trip</title>
@@ -25,7 +22,7 @@
             background:white;
             padding:30px;
             border-radius:15px;
-            box-shadow:0 0 15px rgba(0,0,0,0.1);
+            box-shadow:0 0 15px rgba(0,0,0,.1);
         }
 
         h1{
@@ -50,20 +47,97 @@
             font-size:15px;
         }
 
-        button{
-            width:100%;
-            margin-top:20px;
-            padding:14px;
-            background:#0077ff;
-            color:white;
-            border:none;
-            border-radius:8px;
-            cursor:pointer;
-            font-size:16px;
+        textarea{
+            resize:vertical;
         }
 
-        button:hover{
-            background:#0056cc;
+        /* ---------- GENERATE BUTTON ---------- */
+
+        .generate-btn{
+            width:100%;
+            margin-top:20px;
+            padding:15px;
+            background:#0d6efd;
+            color:white;
+            border:none;
+            border-radius:10px;
+            font-size:18px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .generate-btn:hover{
+            background:#084298;
+            transform:scale(1.03);
+        }
+
+        /* ---------- LOADING ---------- */
+
+        #loading{
+            display:none;
+            text-align:center;
+            margin-top:25px;
+            padding:20px;
+            background:#fff3cd;
+            border-left:6px solid orange;
+            border-radius:12px;
+            animation:pulse 1.2s infinite;
+        }
+
+        @keyframes pulse{
+
+            0%{opacity:0.5;}
+
+            50%{opacity:1;}
+
+            100%{opacity:0.5;}
+
+        }
+
+        /* ---------- AI RESULT ---------- */
+
+        .result{
+            margin-top:35px;
+            background:#f8f9fa;
+            padding:25px;
+            border-radius:15px;
+            border-left:6px solid #28a745;
+        }
+
+        .result h2{
+            color:#28a745;
+            margin-bottom:20px;
+        }
+
+        .ai-box{
+            background:white;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 5px 15px rgba(0,0,0,.08);
+            white-space:pre-wrap;
+            line-height:1.9;
+            font-size:16px;
+            overflow-x:auto;
+        }
+
+        /* ---------- WEATHER ---------- */
+
+        .weather{
+            margin-top:35px;
+            background:#eef7ff;
+            padding:20px;
+            border-radius:12px;
+            border-left:6px solid #0077ff;
+        }
+
+        .weather h2{
+            color:#0077ff;
+            margin-bottom:15px;
+        }
+
+        .weather p{
+            margin-bottom:10px;
+            font-size:17px;
         }
 
         /* ---------- IMAGE GALLERY ---------- */
@@ -78,90 +152,36 @@
         }
 
         .hero-image{
-
             width:100%;
             height:450px;
             object-fit:cover;
             border-radius:15px;
             box-shadow:0 5px 15px rgba(0,0,0,.15);
-
         }
 
         .thumb-gallery{
-
             display:grid;
             grid-template-columns:repeat(4,1fr);
             gap:12px;
             margin-top:15px;
-
         }
 
         .thumb-gallery img{
-
             width:100%;
             height:180px;
             object-fit:cover;
             border-radius:12px;
             cursor:pointer;
             transition:.3s;
-
         }
 
         .thumb-gallery img:hover{
-
             transform:scale(1.05);
-
         }
 
-        /* ---------- WEATHER ---------- */
-
-        .weather{
-
-            margin-top:35px;
-            background:#eef7ff;
-            padding:20px;
-            border-radius:12px;
-            border-left:6px solid #0077ff;
-
-        }
-
-        .weather h2{
-            color:#0077ff;
-            margin-bottom:15px;
-        }
-
-        .weather p{
-            margin-bottom:10px;
-            font-size:17px;
-        }
-
-        /* ---------- RESULT ---------- */
-
-        .result{
-
-            margin-top:35px;
-            background:#f8f9fa;
-            padding:25px;
-            border-radius:12px;
-            border-left:6px solid #28a745;
-
-        }
-
-        .result h2{
-            color:#28a745;
-            margin-bottom:15px;
-        }
-
-        pre{
-
-            white-space:pre-wrap;
-            line-height:1.7;
-            font-size:15px;
-
-        }
+        /* ---------- BACK BUTTON ---------- */
 
         .back-btn{
-
             display:inline-block;
             margin-top:25px;
             padding:12px 20px;
@@ -169,129 +189,120 @@
             color:white;
             text-decoration:none;
             border-radius:8px;
-
+            transition:.3s;
         }
 
         .back-btn:hover{
-
             background:#0056cc;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media(max-width:768px){
+
+            .thumb-gallery{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+            .hero-image{
+                height:280px;
+            }
+
+            .container{
+                width:95%;
+                padding:20px;
+            }
 
         }
 
-       /* ---------------- RESPONSIVE ---------------- */
+        /* ---------- DARK MODE ---------- */
 
-@media (max-width:768px){
+        body.dark-mode{
+            background:#121212;
+            color:white;
+        }
 
-    .thumb-gallery{
-        grid-template-columns:repeat(2,1fr);
-    }
+        body.dark-mode .container{
+            background:#1e1e1e;
+            color:white;
+        }
 
-    .hero-image{
-        height:280px;
-    }
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode label,
+        body.dark-mode strong,
+        body.dark-mode p{
+            color:white;
+        }
 
-}
+        body.dark-mode input,
+        body.dark-mode textarea{
+            background:#2c2c2c;
+            color:white;
+            border:1px solid #555;
+        }
 
+        body.dark-mode .weather{
+            background:#263238;
+            border-left:6px solid #00bcd4;
+        }
 
-/* ---------------- DARK MODE ---------------- */
+        body.dark-mode .result{
+            background:#2b2b2b;
+        }
 
-body.dark-mode{
-    background:#121212;
-    color:#ffffff;
-}
+        body.dark-mode .ai-box{
+            background:#333;
+            color:white;
+        }
 
-body.dark-mode .container{
-    background:#1e1e1e;
-    color:#ffffff;
-    box-shadow:0 0 20px rgba(255,255,255,0.08);
-}
+        body.dark-mode .back-btn{
+            background:#444;
+        }
 
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode label,
-body.dark-mode p,
-body.dark-mode strong{
-    color:#ffffff;
-}
+        body.dark-mode .back-btn:hover{
+            background:#666;
+        }
 
-body.dark-mode input,
-body.dark-mode textarea{
-    background:#2c2c2c;
-    color:#ffffff;
-    border:1px solid #555;
-}
+        body.dark-mode .hero-image,
+        body.dark-mode .thumb-gallery img{
+            box-shadow:0 0 15px rgba(255,255,255,.08);
+        }
 
-body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder{
-    color:#bdbdbd;
-}
+        /* ---------- ANIMATION ---------- */
 
-body.dark-mode button{
-    background:#0d6efd;
-    color:white;
-}
+        body,
+        .container,
+        .weather,
+        .result,
+        .ai-box,
+        input,
+        textarea,
+        button,
+        .back-btn,
+        .hero-image,
+        .thumb-gallery img{
+            transition:all .35s ease;
+        }
 
-body.dark-mode button:hover{
-    background:#0b5ed7;
-}
+        .day-card{
+        display:inline-block;
+        background:#0d6efd;
+        color:white;
+        padding:6px 14px;
+        border-radius:20px;
+        font-weight:bold;
+        margin:10px 0;
+        font-size:18px;
+        }
 
-body.dark-mode .weather{
-    background:#263238;
-    border-left:6px solid #00bcd4;
-    color:white;
-}
-
-body.dark-mode .weather h2,
-body.dark-mode .weather p{
-    color:white;
-}
-
-body.dark-mode .result{
-    background:#2b2b2b;
-    border-left:6px solid #28a745;
-}
-
-body.dark-mode .result h2{
-    color:#4caf50;
-}
-
-body.dark-mode pre{
-    color:#f1f1f1;
-}
-
-body.dark-mode .gallery-card h2{
-    color:#ffffff;
-}
-
-body.dark-mode .back-btn{
-    background:#444;
-    color:white;
-}
-
-body.dark-mode .back-btn:hover{
-    background:#666;
-}
-
-body.dark-mode .hero-image,
-body.dark-mode .thumb-gallery img{
-    box-shadow:0 0 15px rgba(255,255,255,0.08);
-}
-
-
-/* ---------- Smooth Animation ---------- */
-
-body,
-.container,
-.weather,
-.result,
-input,
-textarea,
-button,
-.back-btn,
-.hero-image,
-.thumb-gallery img{
-    transition:all .35s ease;
-}
+        .ai-box hr{
+        border:none;
+        height:2px;
+        background:linear-gradient(to right,#0d6efd,#00c6ff);
+        margin:25px 0;
+        border-radius:10px;
+        }
 
     </style>
 
@@ -301,85 +312,90 @@ button,
 
 <div class="container">
 
-    <div style="display:flex;justify-content:space-between;align-items:center;">
+    <!-- Header -->
 
-    <h1>✈️ Create New Trip</h1>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;">
 
-    <button
-    type="button"
-    id="themeBtn"
-    onclick="toggleTheme()"
-    style="
-        width:auto;
-        margin-top:0;
-        padding:10px 18px;
-        border-radius:10px;
-        font-size:16px;
-    "
->
-    🌙 Dark Mode
-</button>
+        <h1>✈️ AI Trip Planner</h1>
 
-</div>
+        <button
+            type="button"
+            id="themeBtn"
+            onclick="toggleTheme()"
+            style="width:auto;padding:10px 18px;border-radius:10px;">
+            🌙 Dark Mode
+        </button>
 
-    <form method="POST">
+    </div>
+
+    <hr style="margin:20px 0;">
+
+    <!-- Trip Form -->
+
+    <form method="POST" id="tripForm">
 
         {% csrf_token %}
 
-        <label>Destination</label>
-
+        <label>📍 Destination</label>
         <input
             type="text"
             name="destination"
-            placeholder="Enter destination"
+            placeholder="Enter destination..."
             required
         >
 
-        <label>Number of Days</label>
-
+        <label>📅 Number of Days</label>
         <input
             type="number"
             name="days"
+            min="1"
             required
         >
 
-        <label>Budget (₹)</label>
-
+        <label>💰 Budget (₹)</label>
         <input
             type="number"
             name="budget"
+            min="1000"
             required
         >
 
-        <label>Preferences</label>
-
+        <label>❤️ Preferences</label>
         <textarea
             name="preferences"
             rows="4"
-            placeholder="Adventure, Nature, Food, Beach..."
+            placeholder="Adventure, Nature, Food, Shopping..."
         ></textarea>
 
-        <button type="submit">
-            🤖 Generate AI Trip Plan
+        <button class="generate-btn" type="submit">
+            🚀 Generate AI Trip
         </button>
 
     </form>
 
+    <!-- Loading -->
+
+    <div id="loading">
+
+        <h2>🤖 AI is creating your dream trip...</h2>
+
+        <p>Please wait a few seconds.</p>
+
+    </div>
+
+    <!-- Gallery -->
 
     {% if image_urls %}
 
     <div class="gallery-card">
 
-        <h2>🖼 Destination Gallery</h2>
-
-        <!-- Hero Image -->
+        <h2>📸 Destination Gallery</h2>
 
         <img
             src="{{ image_urls.0 }}"
             class="hero-image"
+            alt="Destination"
         >
-
-        <!-- Thumbnail Images -->
 
         <div class="thumb-gallery">
 
@@ -402,72 +418,101 @@ button,
 
     {% endif %}
 
+    <!-- Weather -->
 
     {% if weather %}
 
     <div class="weather">
 
-        <h2>🌤 Current Weather</h2>
+        <h2>🌦 Current Weather</h2>
 
-        <p>🌡 <strong>Temperature:</strong> {{ weather.temp }} °C</p>
+        <p>🌡 Temperature :
+            <strong>{{ weather.temp }}°C</strong>
+        </p>
 
-        <p>💧 <strong>Humidity:</strong> {{ weather.humidity }}%</p>
+        <p>💧 Humidity :
+            <strong>{{ weather.humidity }}%</strong>
+        </p>
 
-        <p>☁ <strong>Condition:</strong> {{ weather.condition }}</p>
-
-    </div>
-
-    {% endif %}
-
-
-    {% if plan %}
-
-    <div class="result">
-
-        <h2>🤖 Your AI Trip Plan</h2>
-
-        <pre>{{ plan }}</pre>
+        <p>☁ Condition :
+            <strong>{{ weather.condition }}</strong>
+        </p>
 
     </div>
 
     {% endif %}
 
-    <a href="/dashboard/" class="back-btn">
-        ⬅ Back to Dashboard
-    </a>
+    <!-- AI Result -->
+
+{% if plan %}
+
+<div class="result">
+
+    <h2>🤖 Your AI Trip Plan</h2>
+
+    <div id="trip-plan" class="ai-box">
+    {{ plan }}
+</div>
 
 </div>
 
-</body>
+{% endif %}
+
+    <center>
+
+        <a href="/dashboard/" class="back-btn">
+            ⬅ Back to Dashboard
+        </a>
+
+    </center>
+
+</div>
 
 <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Show loading animation when form is submitted
+    const form = document.getElementById("tripForm");
+
+    if(form){
+        form.addEventListener("submit", function () {
+            document.getElementById("loading").style.display = "block";
+        });
+    }
+
+});
 
 function toggleTheme(){
 
     document.body.classList.toggle("dark-mode");
 
-    let btn = document.getElementById("themeBtn");
+    const btn = document.getElementById("themeBtn");
 
     if(document.body.classList.contains("dark-mode")){
 
-        btn.innerHTML="☀️ Light Mode";
-
+        btn.innerHTML = "☀️ Light Mode";
         localStorage.setItem("theme","dark");
 
-    }
+    }else{
 
-    else{
-
-        btn.innerHTML="🌙 Dark Mode";
-
+        btn.innerHTML = "🌙 Dark Mode";
         localStorage.setItem("theme","light");
 
     }
 
 }
 
-window.onload=function(){
+window.onload = function () {
 
+    // Hide loading animation after page loads
+    const loading = document.getElementById("loading");
+
+    if(loading){
+        loading.style.display = "none";
+    }
+
+    // Apply saved theme
     if(localStorage.getItem("theme")=="dark"){
 
         document.body.classList.add("dark-mode");
@@ -476,8 +521,43 @@ window.onload=function(){
 
     }
 
+    // Format AI Trip Plan
+    const plan = document.getElementById("trip-plan");
+
+    if(plan){
+
+        let html = plan.innerHTML;
+
+// Replace <br> tags with real line breaks
+html = html.replace(/<br\s*\/?>/gi, "\n");
+
+        // Remove Markdown **
+        html = html.replace(/\*\*/g,"");
+
+        // Remove separator lines
+        html = html.replace(/---/g,"<hr>");
+
+        // Beautiful Headings
+        html = html.replace(/🌍 Destination Overview/g,"<h2>🌍 Destination Overview</h2>");
+        html = html.replace(/📅 Day-wise Itinerary/g,"<h2>📅 Day-wise Itinerary</h2>");
+        html = html.replace(/💰 Budget Breakdown/g,"<h2>💰 Budget Breakdown</h2>");
+        html = html.replace(/📊 Daily Expense Plan/g,"<h2>📊 Daily Expense Plan</h2>");
+        html = html.replace(/🎒 Packing Checklist/g,"<h2>🎒 Packing Checklist</h2>");
+        html = html.replace(/💡 Money Saving Tips/g,"<h2>💡 Money Saving Tips</h2>");
+        html = html.replace(/🍽 Food Recommendations/g,"<h2>🍽 Food Recommendations</h2>");
+        html = html.replace(/⭐ Must Visit Places/g,"<h2>⭐ Must Visit Places</h2>");
+
+        // Highlight Day headings
+        html = html.replace(/Day\s(\d+)/g,'<span class="day-card">Day $1</span>');
+
+        plan.innerHTML = html;
+
+    }
+
 }
 
 </script>
+
+</body>
 
 </html>

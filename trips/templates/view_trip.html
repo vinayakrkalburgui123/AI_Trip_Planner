@@ -203,6 +203,21 @@
 
 </div>
 
+{% if trip.image_url %}
+<div style="margin:30px auto; max-width:1100px;">
+    <img
+        src="{{ trip.image_url }}"
+        alt="{{ trip.destination }}"
+        style="
+            width:100%;
+            max-height:450px;
+            object-fit:cover;
+            border-radius:15px;
+            box-shadow:0 8px 20px rgba(0,0,0,.2);
+        ">
+</div>
+{% endif %}
+
 <div class="container">
 
     <!-- SUMMARY -->
@@ -232,9 +247,9 @@
 
         <h2>🤖 AI Travel Itinerary</h2>
 
-        <div class="plan-box">
-            {{ trip.plan }}
-        </div>
+        <div id="trip-plan" class="plan-box">
+    {{ trip.plan|linebreaksbr }}
+</div>
 
     </div>
 
@@ -350,10 +365,47 @@
             📍 Open in Google Maps
         </a>
 
+    
+
     </div>
 
 </div>
 
-</body>
+<script>
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const plan = document.getElementById("trip-plan");
+
+    if (!plan) return;
+
+    let html = plan.innerHTML;
+
+    // Remove markdown **
+    html = html.replace(/\*\*/g, "");
+
+    // Remove separator lines
+    html = html.replace(/={5,}/g, "<hr>");
+    html = html.replace(/-{3,}/g, "<hr>");
+
+    // Section headings
+    html = html.replace(/🌍 Destination Overview/g, "<h2>🌍 Destination Overview</h2>");
+    html = html.replace(/🗓️ Day-wise Itinerary/g, "<h2>🗓️ Day-wise Itinerary</h2>");
+    html = html.replace(/💰 Budget Breakdown/g, "<h2>💰 Budget Breakdown</h2>");
+    html = html.replace(/🍴 Food Recommendations/g, "<h2>🍴 Food Recommendations</h2>");
+    html = html.replace(/📍 Must Visit Places/g, "<h2>📍 Must Visit Places</h2>");
+
+    // Day badges
+    html = html.replace(
+        /(Day\s*\d+\s*:)/g,
+        '<div style="margin-top:25px;"><span style="background:#0d6efd;color:white;padding:8px 18px;border-radius:25px;font-weight:bold;">$1</span></div>'
+    );
+
+    plan.innerHTML = html;
+
+});
+
+</script>
+
+</body>
 </html>

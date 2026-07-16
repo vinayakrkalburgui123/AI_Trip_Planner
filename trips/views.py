@@ -15,6 +15,7 @@ from reportlab.pdfgen import canvas
 # ----------------------------
 
 genai.configure(api_key=settings.GEMINI_API_KEY)
+print("GEMINI KEY:", settings.GEMINI_API_KEY)
 print("GEMINI KEY EXISTS:", bool(settings.GEMINI_API_KEY))
 
 try:
@@ -170,23 +171,28 @@ Make sure the total equals exactly ₹{budget}.
 
 📊 Daily Expense Plan
 
-Create a table like this.
+DO NOT use markdown tables.
+
+Write the expenses like this:
 
 Day 1
 
-Hotel : ₹...
+Hotel: ₹4000
 
-Food : ₹...
+Food: ₹1500
 
-Transport : ₹...
+Transport: ₹1000
 
-Activities : ₹...
+Activities: ₹2000
 
-Shopping : ₹...
+Shopping: ₹500
 
-Total : ₹...
+Total: ₹9000
 
-Repeat for every day.
+Repeat the same format for every day.
+
+Do not use "|" characters.
+Do not use markdown tables.
 
 ==================================================
 
@@ -223,6 +229,10 @@ Suggest famous tourist attractions.
 
             plan = response.text
 
+            plan = plan.replace("==================================================", "")
+            plan = plan.replace("==========================================", "")
+            
+
             # ----------------------------
             # Budget Calculation
             # ----------------------------
@@ -245,20 +255,22 @@ Suggest famous tourist attractions.
             )
 
             Trip.objects.create(
-                user=request.user,
-                destination=destination,
-                days=days,
-                budget=budget,
-                preferences=preferences,
-                plan=plan,
+    user=request.user,
+    destination=destination,
+    days=days,
+    budget=budget,
+    preferences=preferences,
+    plan=plan,
 
-                hotel_budget=hotel_budget,
-                food_budget=food_budget,
-                transport_budget=transport_budget,
-                activities_budget=activities_budget,
-                shopping_budget=shopping_budget,
-                emergency_budget=emergency_budget,
-            )
+    image_url=image_urls[0] if image_urls else "",
+
+    hotel_budget=hotel_budget,
+    food_budget=food_budget,
+    transport_budget=transport_budget,
+    activities_budget=activities_budget,
+    shopping_budget=shopping_budget,
+    emergency_budget=emergency_budget,
+)
 
         except Exception as e:
 
