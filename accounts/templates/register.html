@@ -66,7 +66,13 @@
 
         {% csrf_token %}
 
-        {{ form.as_p }}
+        {% if form.errors %}
+<div style="color:red; margin-bottom:15px;">
+    {{ form.errors }}
+</div>
+{% endif %}
+
+{{ form.as_p }}
 
         <button type="submit">
             Register
